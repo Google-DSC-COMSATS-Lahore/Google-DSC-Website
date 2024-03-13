@@ -1,9 +1,6 @@
-<h1 align="center">🌟 Google DSC Contributors Hub 🌟</h1>
+<h1 align="center">🌟Welcome to Google DSC Contributors Hub 🌟</h1>
 
-
-## 🌈 Why Contribute?
-
-Contribute to projects that empower communities, level up your skills, and network with peers and mentors!
+<p>Contribute to projects that empower communities, level up your skills, and network with peers and mentors!</p>
 
 ## 🚀 Getting Started
 
@@ -14,6 +11,7 @@ Contribute to projects that empower communities, level up your skills, and netwo
 ## 🔗 Resources
 
 - [WhatsApp Community](https://chat.whatsapp.com/JFMjnJaTSZZD7gyDSSZ8ZM)
+- [Chapter Page](https://gdsc.community.dev/comsats-university-lahore-campus/)
 - [Open Source Guides](https://opensource.guide/)
 
 
