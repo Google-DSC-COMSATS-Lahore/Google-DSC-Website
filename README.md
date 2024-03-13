@@ -1,14 +1,13 @@
-<h1 align="center">🌟Welcome to Google DSC Contributors Hub 🌟</h1>
+<h1 align="center">Welcome to Google DSC Contributors Hub</h1>
 
-<p>Contribute to projects that empower communities, level up your skills, and network with peers and mentors!</p>
+<p>Contribute to the GDSC website by finding an issue, adding a feature, or enhancing its look. We welcome your creativity and passion!</p>
 
 ## 🚀 Getting Started
 
-1. **Explore Projects:** Find your passion and dive in.
-2. **Contribute:** Craft your solution and make a difference.
-3. **Submit:** Share your work and receive recognition.
+1. **Explore Issues:** Find an issue that piques your interest or propose your own idea.
+2. **Contribute:** Add your creative touch to the website.
+3. **Submit:** Share your contribution and let's make the GDSC website shine!
 
-## 🔗 Resources
 
 - [WhatsApp Community](https://chat.whatsapp.com/JFMjnJaTSZZD7gyDSSZ8ZM)
 - [Chapter Page](https://gdsc.community.dev/comsats-university-lahore-campus/)
