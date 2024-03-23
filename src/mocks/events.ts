@@ -1,7 +1,3 @@
-export const pastEvents: {
-  name: string;
-  category: string[];
-  image: string;
-  date: string;
-  link: string;
-}[] = [];
+import Event from "@/types/event";
+
+export const pastEvents: Event[] = [];
