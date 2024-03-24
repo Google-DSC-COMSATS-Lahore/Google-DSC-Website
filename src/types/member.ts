@@ -5,6 +5,7 @@ type Member = {
   name: string;
   skill: string;
   bio: string;
+  tags?: { name: string; value: string }[];
   socials: {
     name: string;
     url: string;
