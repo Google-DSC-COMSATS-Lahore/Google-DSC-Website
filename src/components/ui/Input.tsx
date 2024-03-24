@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import PropTypes from "prop-types";
 
 import localFont from "next/font/local";
 const objectSans = localFont({ src: "../../fonts/ObjectSans-Regular.otf" });
@@ -40,15 +39,6 @@ const Input: FC<InputProps> = (props) => {
       </div>
     </div>
   );
-};
-
-Input.propTypes = {
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  icon: PropTypes.node,
-  className: PropTypes.string,
 };
 
 export default Input;

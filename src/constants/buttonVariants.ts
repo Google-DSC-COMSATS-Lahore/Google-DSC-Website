@@ -1,13 +1,15 @@
+import VariantTypes from "./buttonVariantTypes";
+
 const Variants: {
   [key: string]: string;
 } = {
-  default: "bg-black text-white",
-  primary: "bg-blue text-white",
-  ghost: "bg-ghost text-black",
-  danger: "bg-red text-white",
-  warning: "bg-yellow text-black",
-  disabled: "opacity-80",
-  outline: "bg-white text-black border border-black",
+  [VariantTypes.Default]: "bg-black text-white",
+  [VariantTypes.Primary]: "bg-blue text-white",
+  [VariantTypes.Ghost]: "bg-ghost text-black",
+  [VariantTypes.Danger]: "bg-red text-white",
+  [VariantTypes.Warning]: "bg-yellow text-black",
+  [VariantTypes.Disabled]: "opacity-80",
+  [VariantTypes.Outline]: "bg-white text-black border border-black",
 };
 
 export default Variants;

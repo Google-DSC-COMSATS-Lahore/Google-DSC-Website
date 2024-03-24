@@ -1,3 +1,5 @@
+"use client"
+
 import React, { FC } from "react";
 
 import Sizes from "@/constants/buttonSizes";
@@ -23,7 +25,7 @@ const Button: FC<ButtonProps> = (props) => {
     onClick,
     children,
   } = props;
-  const baseClasses = " w-full rounded-[12px]";
+  const baseClasses = " w-full rounded-[12px] ";
 
   const variantClasses = Variants[variant];
 
