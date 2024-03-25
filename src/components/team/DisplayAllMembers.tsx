@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, useMemo, useState } from "react";
 import Button from "../ui/Button";
 import { default as MemberCard } from "./Member";
 import Container from "@/components/shared/Container";
@@ -14,23 +14,22 @@ interface DisplayAllMembersProps {
 
 const DisplayAllMembers: FC<DisplayAllMembersProps> = (props) => {
   const { members } = props;
-  const maxMembersToShow = 8;
-  const [visibleMembers, setVisibleMembers] = useState(
-    members.slice(0, maxMembersToShow)
-  );
+  const maxMembersToShow = 3;
   const [showMore, setShowMore] = useState(members.length > maxMembersToShow);
 
-  const handleShowMore = () => {
-    const remainingMembers = members.slice(visibleMembers.length);
-    setVisibleMembers((prevMembers) => [...prevMembers, ...remainingMembers]);
-    setShowMore(false);
-  };
+  const membersToShow = useMemo(() => {
+    if (!showMore) {
+      return members;
+    } else {
+      return members.slice(0, maxMembersToShow);
+    }
+  }, [showMore, members]);
 
   return (
     <Container>
       {members.length > 0 ? (
         <div className="mt-[64px] sm:mt-[40px] grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-[20px]">
-          {members.slice(0, maxMembersToShow).map((member, i) => (
+          {membersToShow.map((member, i) => (
             <MemberCard key={i} member={member} />
           ))}
         </div>
@@ -46,7 +45,7 @@ const DisplayAllMembers: FC<DisplayAllMembersProps> = (props) => {
       {showMore && (
         <div className="flex justify-center items-center">
           <Button
-            onClick={handleShowMore}
+            onClick={() => setShowMore(false)}
             variant={VariantTypes.Primary}
             size={SizesTypes.Small}
             className="mt-[40px] max-w-[200px] mx-auto"

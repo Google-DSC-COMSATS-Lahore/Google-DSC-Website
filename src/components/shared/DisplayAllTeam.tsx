@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, useMemo, useState } from "react";
 import Button from "../ui/Button";
 import TeamCard from "../ui/TeamCard";
 import Member from "@/types/member";
@@ -13,23 +13,22 @@ interface DisplayTeamProps {
 
 const DisplayAllTeam: FC<DisplayTeamProps> = (props) => {
   const { members } = props;
-  const maxEventsToShow = 8;
-  const [visibleTeam, setVisibleTeam] = useState(
-    members.slice(0, maxEventsToShow)
-  );
-  const [showMore, setShowMore] = useState(members.length > maxEventsToShow);
+  const maxMembersToShow = 8;
+  const [showMore, setShowMore] = useState(members.length > maxMembersToShow);
 
-  const handleShowMore = () => {
-    const remainingTeam = members.slice(visibleTeam.length);
-    setVisibleTeam((prevTeam) => [...prevTeam, ...remainingTeam]);
-    setShowMore(false);
-  };
+  const membersToShow = useMemo(() => {
+    if (!showMore) {
+      return members;
+    } else {
+      return members.slice(0, maxMembersToShow);
+    }
+  }, [showMore, members]);
 
   return (
     <>
-      {visibleTeam.length > 0 ? (
+      {membersToShow.length > 0 ? (
         <div className="mt-[20px] sm:mt-[40px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-[20px]">
-          {visibleTeam.map((team, i) => (
+          {membersToShow.map((team, i) => (
             <TeamCard
               key={i}
               image={team.image}
@@ -52,7 +51,7 @@ const DisplayAllTeam: FC<DisplayTeamProps> = (props) => {
       {showMore && (
         <div className="flex justify-center items-center">
           <Button
-            onClick={handleShowMore}
+            onClick={() => setShowMore(false)}
             variant={VariantTypes.Warning}
             size={SizesTypes.Small}
             className="mt-[40px] max-w-[200px] mx-auto"

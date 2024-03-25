@@ -1,19 +1,12 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import Member from "@/types/member";
+import TruncateText from "@/utils/truncateText";
 
 interface MemberProps {
   className?: string;
   member: Member;
 }
-
-const truncateText = (text: string, maxLength: number) => {
-  if (text.length > maxLength) {
-    return text.substring(0, maxLength) + "...";
-  } else {
-    return text;
-  }
-};
 
 const Member: FC<MemberProps> = (props) => {
   const { className, member } = props;
@@ -63,7 +56,7 @@ const Member: FC<MemberProps> = (props) => {
           ))}
         </div>
         <p className="flex-1 mt-[16px] text-[16px] sm:text-[16px] text-black leading-[150%]">
-          {truncateText(bio, 220)}
+          {TruncateText(bio, 220)}
         </p>
       </div>
     </div>

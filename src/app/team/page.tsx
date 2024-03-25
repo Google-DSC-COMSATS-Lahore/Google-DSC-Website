@@ -10,29 +10,13 @@ import DisplayAllMembers from "../../components/team/DisplayAllMembers";
 import Container from "@/components/shared/Container";
 
 import Members, { hierarchyTags } from "@/mocks/members";
-import Member from "@/types/member";
-
-const filterMembersByTags = (members: Member[], selectedTag: string) => {
-  const filteredMembers = [];
-
-  for (const member of members) {
-    const memberTags = member.tags || [];
-
-    const matchedTags = memberTags.some((tag) => tag.name === selectedTag);
-
-    if (matchedTags) {
-      filteredMembers.push(member);
-    }
-  }
-
-  return filteredMembers;
-};
+import FilterByTags from "@/utils/filterByTags";
 
 const Page = () => {
   const [selectedMember, setSelectedMember] = useState([...Members]);
 
   const handleTagClick = (tag: { name: string; value: string }) => {
-    const filteredMembers = filterMembersByTags(Members, tag.name);
+    const filteredMembers = FilterByTags(Members, tag.name);
     setSelectedMember(filteredMembers);
   };
 

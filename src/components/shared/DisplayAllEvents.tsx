@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, useMemo, useState } from "react";
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 import Event from "@/types/event";
@@ -8,28 +8,27 @@ import VariantTypes from "@/constants/buttonVariantTypes";
 import SizesTypes from "@/constants/buttonSizesTypes";
 
 interface DisplayEventsProps {
-  events: Event[]
+  events: Event[];
 }
 
 const DisplayAllEvents: FC<DisplayEventsProps> = (props) => {
   const { events } = props;
   const maxEventsToShow = 8;
-  const [visibleEvents, setVisibleEvents] = useState(
-    events.slice(0, maxEventsToShow)
-  );
   const [showMore, setShowMore] = useState(events.length > maxEventsToShow);
 
-  const handleShowMore = () => {
-    const remainingEvents = events.slice(visibleEvents.length);
-    setVisibleEvents((prevEvents) => [...prevEvents, ...remainingEvents]);
-    setShowMore(false);
-  };
+  const eventsToShow = useMemo(() => {
+    if (!showMore) {
+      return events;
+    } else {
+      return events.slice(0, maxEventsToShow);
+    }
+  }, [showMore, events]);
 
   return (
     <>
-      {visibleEvents.length > 0 ? (
+      {eventsToShow.length > 0 ? (
         <div className="mt-[20px] sm:mt-[40px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-[20px]">
-          {visibleEvents.map((event, i) => (
+          {eventsToShow.map((event, i) => (
             <Card
               key={i}
               image={event.image}
@@ -54,7 +53,7 @@ const DisplayAllEvents: FC<DisplayEventsProps> = (props) => {
       {showMore && (
         <div className="flex justify-center items-center">
           <Button
-            onClick={handleShowMore}
+            onClick={() => setShowMore(false)}
             variant={VariantTypes.Warning}
             size={SizesTypes.Large}
             className="mt-[40px] max-w-[200px] mx-auto"
